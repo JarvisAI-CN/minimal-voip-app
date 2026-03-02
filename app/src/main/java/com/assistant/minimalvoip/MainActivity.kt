@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -59,6 +60,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -306,6 +308,24 @@ fun ChatMessageItem(message: Message) {
                             text = message.text,
                             isSent = message.isSent,
                             onPlayClick = { /* 播放语音消息 */ }
+                        )
+                    }
+                    MessageType.IMAGE -> {
+                        Text(
+                            text = "图片消息: ${message.text}",
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                    }
+                    MessageType.VIDEO -> {
+                        Text(
+                            text = "视频消息: ${message.text}",
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                    }
+                    MessageType.FILE -> {
+                        Text(
+                            text = "文件消息: ${message.text}",
+                            style = MaterialTheme.typography.bodyMedium
                         )
                     }
                 }
